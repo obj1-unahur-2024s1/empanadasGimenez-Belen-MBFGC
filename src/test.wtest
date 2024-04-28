@@ -1,0 +1,30 @@
+import empleados.*
+
+test "finanzas de Galvan" { 
+	galvan.gastar(40000)
+	galvan.gastar(80000)
+	assert.equals(120000, galvan.totalDeuda())
+	assert.equals(0,galvan.totalDinero())
+	
+}
+
+test "finanzas de Galvan2" { 
+	galvan.gastar(40000)
+	galvan.gastar(80000)
+	galvan.cobrarSueldo()
+	assert.equals(0, galvan.totalDeuda())
+	assert.equals(30000,galvan.totalDinero())
+	
+}
+
+
+test "sueldos y fondo" {
+	baigorria.venderEmpanadas(500)	
+	galvan.sueldoNuevo(20000)
+	baigorria.venderEmpanadas(500)
+	gimenez.pagarA(baigorria)
+	gimenez.pagarA(galvan)
+	assert.equals(120000, baigorria.sueldo())
+	assert.equals(2860000,gimenez.fondo())
+
+}
